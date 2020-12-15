@@ -19,8 +19,6 @@ import io.ktor.freemarker.*
 import io.ktor.gson.*
 import io.ktor.routing.*
 
-fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
-
 @Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE")
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
