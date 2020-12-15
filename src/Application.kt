@@ -18,6 +18,9 @@ import io.ktor.features.*
 import io.ktor.freemarker.*
 import io.ktor.gson.*
 import io.ktor.routing.*
+import net.littlelite.smarktor.service.DbService
+import org.slf4j.event.Level
+
 
 @Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE")
 @kotlin.jvm.JvmOverloads
@@ -38,7 +41,9 @@ fun Application.module(testing: Boolean = false) {
     /**
      * Logging of HTTP calls
      */
-    install(CallLogging)
+    install(CallLogging) {
+        level = Level.INFO
+    }
 
     /**
      * GSON support
@@ -53,6 +58,11 @@ fun Application.module(testing: Boolean = false) {
      */
     val client = HttpClient(Apache) {
     }
+
+    /**
+     * Initialize DB
+     */
+    DbService.init(log)
 
     /**
      * Routing

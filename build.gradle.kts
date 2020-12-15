@@ -9,6 +9,8 @@
  */
 
 val ktorVersion: String by extra("1.4.3")
+val exposedVersion: String by extra("0.28.1")
+val h2Version: String by extra("1.4.200")
 
 plugins {
     application
@@ -67,5 +69,11 @@ dependencies {
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-apache:$ktorVersion")
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("com.h2database:h2:$h2Version")
+    implementation("com.zaxxer:HikariCP:3.4.5")
+    implementation("commons-codec:commons-codec:1.15")
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
 }
