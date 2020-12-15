@@ -11,14 +11,14 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
 </head>
 
-<body style="font-family: 'Rubik', sans-serif;">
+<body>
 
-<div class="container" style="margin-top: 20px">
-
-    <div class="container" style="margin-top: 80px">
+    <div class="container topstyle">
         <div class="jumbotron">
+            <img class="float-right logo-image" src="/static/img/ktor_logo.svg" />
             <h2 style="font-size: 50px">SmarKTOR</h2>
             <p>KTOR Template Project</p>
             <div>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-</div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

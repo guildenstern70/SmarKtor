@@ -27,7 +27,6 @@ fun Routing.root() {
         call.respond(FreeMarkerContent("index.ftl", context, ""))
     }
 
-    // Static feature. Try to access `/static/ktor_logo.svg`
     static("/static") {
         resources("static")
     }

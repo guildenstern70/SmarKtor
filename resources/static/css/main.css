@@ -1,0 +1,21 @@
+/*
+ * Project SmarKtor
+ *
+ * A template project for Ktor in Kotlin
+ *
+ * Copyright (c) Alessio Saltarin, 2020.
+ * This software is licensed under MIT License.
+ *
+ */
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.topstyle {
+    margin-top: 80px;
+}
+
+.logo-image {
+    width: 120px;
+}
