@@ -21,18 +21,22 @@ data class User(
     val surname: String
 )
 {
-    private val passwordHash = DigestUtils.sha256Hex(this.clearPassword)
-
     fun insert()
     {
         val userappname = this.username
+        val clearpwd = this.clearPassword
+
         Users.insert {
             it[username] = userappname
             it[fullname] = "$name $surname"
             it[created] = System.currentTimeMillis()
-            it[password] = passwordHash
+            it[password] = User.passwordHash(clearpwd)
         }
     }
 
+    companion object
+    {
+        fun passwordHash(passwordInClear: String): String = DigestUtils.sha256Hex(passwordInClear)
+    }
 
 }

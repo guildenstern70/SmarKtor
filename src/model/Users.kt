@@ -10,10 +10,9 @@
 
 package net.littlelite.smarktor.model
 
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.id.IntIdTable
 
-object Users : Table() {
-    private val id = integer("id").autoIncrement()
+object Users : IntIdTable() {
     val username = varchar("username",128)
     var password = varchar("password",255)
     val fullname = varchar("fullname",128)

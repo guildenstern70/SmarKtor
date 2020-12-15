@@ -10,6 +10,27 @@
 
 package net.littlelite.smarktor.service
 
-class UserService
+import net.littlelite.smarktor.logic.User
+
+object UserService
 {
+    fun getTestUsers(): List<User>
+    {
+        val user1 = User("alessio",
+            "doctor",
+            "Alessio",
+            "Saltarin")
+
+        val user2 = User("elena",
+            "elena",
+            "Elena",
+            "Zambrelli")
+
+        val user3 = User("raoul",
+            "raul",
+            "Raoul",
+            "Invernizzi")
+
+        return listOf(user1, user2, user3)
+    }
 }

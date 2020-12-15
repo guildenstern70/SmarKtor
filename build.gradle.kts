@@ -76,4 +76,5 @@ dependencies {
     implementation("com.zaxxer:HikariCP:3.4.5")
     implementation("commons-codec:commons-codec:1.15")
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
+    testImplementation("org.assertj:assertj-core:3.18.1")
 }
