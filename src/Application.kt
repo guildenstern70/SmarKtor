@@ -25,18 +25,40 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
 
+    /**
+     * FreeMarker support
+     */
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
 
+    /**
+     * Default Headers
+     */
+    install(DefaultHeaders)
+
+    /**
+     * Logging of HTTP calls
+     */
+    install(CallLogging)
+
+    /**
+     * GSON support
+     */
     install(ContentNegotiation) {
         gson {
         }
     }
 
+    /**
+     * HTTP Server
+     */
     val client = HttpClient(Apache) {
     }
 
+    /**
+     * Routing
+     */
     routing {
         root()
     }
