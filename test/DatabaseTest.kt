@@ -12,7 +12,7 @@ package net.littlelite.smarktor
 
 import io.ktor.application.*
 import io.ktor.server.testing.*
-import net.littlelite.smarktor.dao.UserRow
+import net.littlelite.smarktor.dao.UserEntity
 import net.littlelite.smarktor.dao.UsersDao
 import net.littlelite.smarktor.service.DbService
 import org.assertj.core.api.Assertions.assertThat
@@ -40,7 +40,7 @@ class DatabaseTest
             module(testing = true)
         })
         {
-            var userRecords: SizedIterable<UserRow>? = null
+            var userRecords: SizedIterable<UserEntity>? = null
             transaction {
                 userRecords = UsersDao.findByUsername("alessio")
                 assertThat(userRecords!!.count()).isEqualTo(1L)

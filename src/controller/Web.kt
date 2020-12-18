@@ -8,7 +8,7 @@
  *
  */
 
-package net.littlelite.smarktor
+package net.littlelite.smarktor.controller
 
 import io.ktor.application.*
 import io.ktor.freemarker.*
@@ -17,7 +17,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-fun Routing.root() {
+fun Routing.web() {
     get("/") {
         call.respondRedirect("/index")
     }

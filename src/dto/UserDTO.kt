@@ -8,35 +8,40 @@
  *
  */
 
-package net.littlelite.smarktor.logic
+package net.littlelite.smarktor.dto
 
 import net.littlelite.smarktor.model.Users
 import org.apache.commons.codec.digest.DigestUtils
 import org.jetbrains.exposed.sql.insert
 
-data class User(
+data class UserDTO(
+    val id: Int,
     val username: String,
-    val clearPassword: String,
     val name: String,
-    val surname: String
+    val surname: String,
+    var initialPassword: String?,
+    val age: Int
 )
 {
     fun insert()
     {
-        val userappname = this.username
-        val clearpwd = this.clearPassword
-
+        val initPwd = initialPassword ?: "initialPassword"
         Users.insert {
-            it[username] = userappname
-            it[fullname] = "$name $surname"
+            it[username] = username
+            it[name] = name
+            it[surname] = surname
+            it[age] = age
             it[created] = System.currentTimeMillis()
-            it[password] = User.passwordHash(clearpwd)
+            it[password] = passwordHash(initPwd)
         }
     }
 
     companion object
     {
         fun passwordHash(passwordInClear: String): String = DigestUtils.sha256Hex(passwordInClear)
+        fun create(username: String, name: String, surname: String, age: Int) = UserDTO(
+            -1, username, name, surname, null, age
+        )
     }
 
 }

@@ -20,7 +20,6 @@ import org.slf4j.Logger
 
 object DbService
 {
-
     fun destroy() {
         transaction {
             drop(Users)
@@ -37,7 +36,7 @@ object DbService
         transaction {
             drop(Users)
             create(Users)
-            UserService.getTestUsers().forEach{ user -> user.insert() }
+            UserService.addTestUsers()
         }
         logger.info("Done.")
     }

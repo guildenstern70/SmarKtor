@@ -18,6 +18,8 @@ import io.ktor.features.*
 import io.ktor.freemarker.*
 import io.ktor.gson.*
 import io.ktor.routing.*
+import net.littlelite.smarktor.controller.api
+import net.littlelite.smarktor.controller.web
 import net.littlelite.smarktor.service.DbService
 import org.slf4j.event.Level
 
@@ -68,7 +70,8 @@ fun Application.module(testing: Boolean = false) {
      * Routing
      */
     routing {
-        root()
+        web()
+        api()
     }
 }
 
