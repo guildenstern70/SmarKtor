@@ -3,7 +3,7 @@
  *
  * A template project for Ktor in Kotlin
  *
- * Copyright (c) Alessio Saltarin, 2020.
+ * Copyright (c) Alessio Saltarin, 2021.
  * This software is licensed under MIT License.
  *
  */
@@ -12,11 +12,10 @@ package net.littlelite.smarktor
 
 import io.ktor.application.*
 import io.ktor.server.testing.*
-import net.littlelite.smarktor.dao.UserEntity
-import net.littlelite.smarktor.dao.UsersDao
+import net.littlelite.smarktor.dao.User
+import net.littlelite.smarktor.model.Users
 import net.littlelite.smarktor.service.DbService
 import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.exposed.sql.SizedIterable
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.AfterClass
 import org.junit.Test
@@ -40,14 +39,11 @@ class DatabaseTest
             module(testing = true)
         })
         {
-            var userRecords: SizedIterable<UserEntity>? = null
             transaction {
-                userRecords = UsersDao.findByUsername("alessio")
-                assertThat(userRecords!!.count()).isEqualTo(1L)
-                val user = userRecords!!.iterator().next()
-                assertThat(user.fullname).isEqualTo("Alessio Saltarin")
+                val user = User.find { Users.username eq "alessio" }.first()
+                assertThat(user).isNotNull
+                assertThat(user!!.fullname).isEqualTo("Alessio Saltarin")
             }
-
         }
     }
 }

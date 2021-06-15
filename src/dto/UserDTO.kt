@@ -3,16 +3,16 @@
  *
  * A template project for Ktor in Kotlin
  *
- * Copyright (c) Alessio Saltarin, 2020.
+ * Copyright (c) Alessio Saltarin, 2021.
  * This software is licensed under MIT License.
  *
  */
 
 package net.littlelite.smarktor.dto
 
-import net.littlelite.smarktor.model.Users
+import net.littlelite.smarktor.dao.User
 import org.apache.commons.codec.digest.DigestUtils
-import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.transactions.transaction
 
 data class UserDTO(
     val id: Int,
@@ -23,24 +23,29 @@ data class UserDTO(
     val age: Int
 )
 {
-    fun insert()
-    {
+    fun insert() = transaction {
         val initPwd = initialPassword ?: "initialPassword"
-        Users.insert {
-            it[username] = username
-            it[name] = name
-            it[surname] = surname
-            it[age] = age
-            it[created] = System.currentTimeMillis()
-            it[password] = passwordHash(initPwd)
+        User.new {
+            username = this.username
+            name = this.name
+            surname = this.surname
+            age = this.age
+            created = System.currentTimeMillis()
+            password = passwordHash(initPwd)
         }
     }
 
     companion object
     {
-        fun passwordHash(passwordInClear: String): String = DigestUtils.sha256Hex(passwordInClear)
+        fun passwordHash(passwordInClear: String): String =
+            DigestUtils.sha256Hex(passwordInClear)
+
         fun create(username: String, name: String, surname: String, age: Int) = UserDTO(
             -1, username, name, surname, null, age
+        )
+
+        fun fromUser(user: User) =  UserDTO(
+            user.id.value, user.username, user.name, user.surname, "****", user.age
         )
     }
 

@@ -3,7 +3,7 @@
  *
  * A template project for Ktor in Kotlin
  *
- * Copyright (c) Alessio Saltarin, 2020.
+ * Copyright (c) Alessio Saltarin, 2021.
  * This software is licensed under MIT License.
  *
  */
@@ -18,7 +18,6 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import net.littlelite.smarktor.dto.UserDTO
 import net.littlelite.smarktor.service.UserService
-import java.security.InvalidParameterException
 
 fun Route.users() {
 
@@ -27,9 +26,9 @@ fun Route.users() {
         call.respond(allUsers)
     }
 
-    get("users/{id}") {
-        val userId = call.parameters["id"]?.toIntOrNull() ?: throw InvalidParameterException()
-        val theUser = UserService.getUser(userId) ?: throw NotFoundException()
+    get("users/{username}") {
+        val user = call.parameters["username"] ?: throw BadRequestException("username")
+        val theUser = UserService.getUser(user) ?: throw NotFoundException()
         call.respond(theUser)
     }
 
