@@ -18,7 +18,7 @@ object Config
     fun hikariDataSource(): HikariDataSource {
         val config = HikariConfig()
         config.driverClassName = "org.h2.Driver"
-        config.jdbcUrl = "jdbc:h2:file:./data/smarktor.db"
+        config.jdbcUrl = "jdbc:h2:file:./data/smarktor.db;AUTO_SERVER=TRUE"
         config.maximumPoolSize = 3
         config.isAutoCommit = false
         config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
