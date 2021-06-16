@@ -42,7 +42,7 @@ class DatabaseTest
                 val user = UserDao.findByUsername("alessio")
                 assertThat(user).isNotNull
                 assertThat(user!!.name).isEqualTo("Alessio")
-                assertThat(user!!.name).isEqualTo("Saltarin")
+                assertThat(user.surname).isEqualTo("Saltarin")
             }
         }
     }
