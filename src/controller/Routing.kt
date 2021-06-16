@@ -15,6 +15,15 @@ import io.ktor.freemarker.*
 import io.ktor.http.content.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import net.littlelite.smarktor.controller.routes.users
+
+fun Routing.api() {
+
+    route("/api/v1") {
+        users()
+    }
+
+}
 
 fun Routing.web() {
     get("/") {

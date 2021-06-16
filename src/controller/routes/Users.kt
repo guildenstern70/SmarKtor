@@ -8,7 +8,7 @@
  *
  */
 
-package net.littlelite.smarktor.controller
+package net.littlelite.smarktor.controller.routes
 
 import io.ktor.application.*
 import io.ktor.features.*
