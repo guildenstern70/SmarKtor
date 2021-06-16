@@ -16,18 +16,24 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 object UserDao
 {
-    fun findByAgeGreaterThan(age: Int): SizedIterable<User>
-    {
-        return User.find { Users.age greaterEq age }
+    fun findByAgeGreaterThan(age: Int): SizedIterable<User> = transaction {
+        User.find { Users.age greaterEq age }
     }
 
-    fun findByUsername(username: String): User?
-    {
-        val users: SizedIterable<User> =
-             User.find { Users.username eq username }
-        if (users.empty())
-            return null
-        return users.first()
+    fun findById(id: Int): User? = transaction {
+        User.findById(id)
+    }
+
+    fun findByUsername(username: String): User? {
+        val users: SizedIterable<User> = transaction {
+            User.find { Users.username eq username }
+        }
+        return transaction {
+            if (users.empty())
+                null
+            else
+                users.first()
+        }
     }
 
     fun delete(userId: Int) = transaction {

@@ -26,9 +26,15 @@ fun Route.users() {
         call.respond(allUsers)
     }
 
-    get("users/{username}") {
+    get("users/{id}") {
+        val idString = call.parameters["id"] ?: throw NotFoundException()
+        val theUser = UserService.getUser(idString.toInt()) ?: throw NotFoundException()
+        call.respond(theUser)
+    }
+
+    get("users/byusername/{username}") {
         val user = call.parameters["username"] ?: throw BadRequestException("username")
-        val theUser = UserService.getUser(user) ?: throw NotFoundException()
+        val theUser = UserService.getUserByUsername(user) ?: throw NotFoundException()
         call.respond(theUser)
     }
 

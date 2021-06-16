@@ -18,10 +18,15 @@ import org.jetbrains.exposed.sql.transactions.transaction
 object UserService
 {
     fun getAllUsers(): List<UserDTO> = transaction {
-            User.all().map( UserDTO::fromUser )
+        User.all().map( UserDTO::fromUser )
     }
 
-    fun getUser(username: String): UserDTO? {
+    fun getUser(id: Int): UserDTO? {
+        val user = UserDao.findById(id) ?: return null
+        return UserDTO.fromUser(user)
+    }
+
+    fun getUserByUsername(username: String): UserDTO? {
         val user = UserDao.findByUsername(username) ?: return null
         return UserDTO.fromUser(user)
     }

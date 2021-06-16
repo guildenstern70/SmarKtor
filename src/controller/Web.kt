@@ -16,7 +16,6 @@ import io.ktor.http.content.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-
 fun Routing.web() {
     get("/") {
         call.respondRedirect("/index")
@@ -31,7 +30,4 @@ fun Routing.web() {
         resources("static")
     }
 
-    get("/json/gson") {
-        call.respond(mapOf("hello" to "world"))
-    }
 }
