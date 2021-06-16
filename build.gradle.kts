@@ -27,7 +27,7 @@ repositories {
 }
 
 application {
-    mainClassName = "net.littlelite.smarktor.MainKt"
+    mainClass.set("net.littlelite.smarktor.MainKt")
 }
 
 dependencies {

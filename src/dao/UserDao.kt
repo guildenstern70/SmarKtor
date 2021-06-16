@@ -23,7 +23,8 @@ object UserDao
 
     fun findByUsername(username: String): User?
     {
-        val users: SizedIterable<User> = User.find { Users.username eq username }
+        val users: SizedIterable<User> =
+             User.find { Users.username eq username }
         if (users.empty())
             return null
         return users.first()

@@ -12,8 +12,7 @@ package net.littlelite.smarktor
 
 import io.ktor.application.*
 import io.ktor.server.testing.*
-import net.littlelite.smarktor.dao.User
-import net.littlelite.smarktor.model.Users
+import net.littlelite.smarktor.dao.UserDao
 import net.littlelite.smarktor.service.DbService
 import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -40,9 +39,10 @@ class DatabaseTest
         })
         {
             transaction {
-                val user = User.find { Users.username eq "alessio" }.first()
+                val user = UserDao.findByUsername("alessio")
                 assertThat(user).isNotNull
-                assertThat(user!!.fullname).isEqualTo("Alessio Saltarin")
+                assertThat(user!!.name).isEqualTo("Alessio")
+                assertThat(user!!.name).isEqualTo("Saltarin")
             }
         }
     }

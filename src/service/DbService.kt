@@ -11,6 +11,7 @@
 package net.littlelite.smarktor.service
 
 import net.littlelite.smarktor.config.Config
+import net.littlelite.smarktor.dao.UserDao
 import net.littlelite.smarktor.model.Users
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils.create
@@ -39,5 +40,12 @@ object DbService
             UserService.addTestUsers()
         }
         logger.info("Done.")
+
+        logger.info("Validating DB...")
+        transaction {
+            val user = UserDao.findByUsername("alessio")
+            logger.info("User is " + user!!.id)
+        }
+
     }
 }

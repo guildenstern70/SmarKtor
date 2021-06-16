@@ -24,6 +24,4 @@ class User(id: EntityID<Int>) : IntEntity(id) {
     var surname by Users.surname
     var created by Users.created
     var age by Users.age
-
-    var fullname = this.name + " " + this.surname
 }
