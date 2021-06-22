@@ -27,10 +27,9 @@
                 </small>
             </div>
             <br/>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">API Documentation</a></p>
+            <p><a class="btn btn-primary btn-lg" href="/swagger-ui" role="button">API Documentation</a></p>
         </div>
     </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
