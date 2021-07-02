@@ -43,4 +43,8 @@ fun Routing.web() {
         resources("static")
     }
 
+    static("/openapi") {
+        resources("openapi")
+    }
+
 }

@@ -16,7 +16,7 @@ val exposed_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.5.20"
 }
 
 group "net.littlelite.smarktor"

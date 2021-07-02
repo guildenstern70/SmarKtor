@@ -27,7 +27,7 @@
                 </small>
             </div>
             <br/>
-            <p><a class="btn btn-primary btn-lg" href="/swagger-ui" role="button">API Documentation</a></p>
+            <p><a class="btn btn-primary btn-lg" href="/openapi/index.html" role="button">API Documentation</a></p>
         </div>
     </div>
 
