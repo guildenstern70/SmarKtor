@@ -216,7 +216,7 @@
           "surname": {
             "type": "string"
           },
-          "passowrd": {
+          "password": {
             "type": "string"
           },
           "age": {

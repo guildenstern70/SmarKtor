@@ -41,13 +41,14 @@ dependencies {
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-client-apache:$ktor_version")
+    implementation("io.ktor:ktor-server-test-host:$ktor_version")
+    implementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("com.h2database:h2:$h2_version")
     implementation("com.zaxxer:HikariCP:3.4.5")
     implementation("commons-codec:commons-codec:1.15")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.assertj:assertj-core:3.18.1")
 }
 

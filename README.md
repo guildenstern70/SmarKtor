@@ -1,10 +1,24 @@
 # SmarKtor
 
-A template project in Kotlin for KTOR
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/dbe9eaa5c6e54a16b1813a54df2c3ad7)](https://www.codacy.com/gh/guildenstern70/SmarKtor/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guildenstern70/SmarKtor&amp;utm_campaign=Badge_Grade)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-https://ktor.io/
+A template project in Kotlin for KTOR, using:
 
-#### Using 'Exposed' as ORM
+* Swagger UI
+* Bootstrap
+* H2 Database
+* Exposed ORM
 
-https://github.com/JetBrains/Exposed/wiki/DAO
+### Build and run
+
+Build using gradle:
+
+    gradle clean assemble
+
+Run using gradle:
+
+    gradle run
+
+
 

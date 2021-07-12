@@ -41,7 +41,7 @@ fun Route.users() {
     post("users") {
         val userRequest = call.receive<UserDTO>()
         UserService.addUser(userRequest)
-        call.respond(HttpStatusCode.Accepted)
+        call.respond(HttpStatusCode.Created)
     }
 
     delete("users/{id}") {

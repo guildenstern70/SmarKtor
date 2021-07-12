@@ -30,10 +30,6 @@ fun Routing.web() {
         call.respondRedirect("/index")
     }
 
-    get("swagger-ui") {
-            call.respondRedirect("https://app.swaggerhub.com/apis-docs/guildenstern70/SmarKtor/1.0.0", true)
-    }
-
     get("/index") {
         val context = mapOf("version" to "0.1.0")
         call.respond(FreeMarkerContent("index.ftl", context, ""))
@@ -45,6 +41,7 @@ fun Routing.web() {
 
     static("/openapi") {
         resources("openapi")
+        default("index.html")
     }
 
 }
