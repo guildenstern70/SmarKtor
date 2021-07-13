@@ -44,7 +44,11 @@ object DbService
         logger.info("Validating DB...")
         transaction {
             val user = UserDao.findByUsername("alessio")
-            logger.info("User is " + user!!.id)
+            if (user!!.id._value == 1) {
+                logger.info("DB is valid")
+            } else {
+                logger.warn("Unknown DB state")
+            }
         }
 
     }

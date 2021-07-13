@@ -27,13 +27,19 @@ fun Route.users() {
     }
 
     get("users/{id}") {
-        val idString = call.parameters["id"] ?: throw NotFoundException()
+        val idString = call.parameters["id"] ?: return@get call.respondText(
+            "Missing or malformed id",
+            status = HttpStatusCode.BadRequest
+        )
         val theUser = UserService.getUser(idString.toInt()) ?: throw NotFoundException()
         call.respond(theUser)
     }
 
     get("users/byusername/{username}") {
-        val user = call.parameters["username"] ?: throw BadRequestException("username")
+        val user = call.parameters["username"] ?: return@get call.respondText(
+            "Missing or malformed username",
+            status = HttpStatusCode.BadRequest
+        )
         val theUser = UserService.getUserByUsername(user) ?: throw NotFoundException()
         call.respond(theUser)
     }
@@ -45,8 +51,11 @@ fun Route.users() {
     }
 
     delete("users/{id}") {
-        val userId = call.parameters["id"]?.toIntOrNull() ?: throw NotFoundException()
-        UserService.deleteUser(userId)
+        val userId = call.parameters["id"] ?: return@delete call.respondText(
+            "Missing or malformed id",
+            status = HttpStatusCode.BadRequest
+        )
+        UserService.deleteUser(userId.toInt())
         call.respond(HttpStatusCode.OK)
     }
 }

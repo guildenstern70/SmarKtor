@@ -50,6 +50,8 @@ dependencies {
     implementation("com.zaxxer:HikariCP:3.4.5")
     implementation("commons-codec:commons-codec:1.15")
     testImplementation("org.assertj:assertj-core:3.18.1")
+    testImplementation(platform("org.junit:junit-bom:5.7.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 kotlin.sourceSets["main"].kotlin.srcDirs("src")

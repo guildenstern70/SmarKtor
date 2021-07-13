@@ -18,7 +18,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.AfterClass
 import org.junit.Test
+import org.junit.jupiter.api.DisplayName
 
+@DisplayName("Smarktor Database")
 class DatabaseTest
 {
     companion object
@@ -31,7 +33,7 @@ class DatabaseTest
     }
 
     @Test
-    fun dbTest()
+    fun `should store and find a user`()
     {
         withTestApplication({
             DbService.init(log)
