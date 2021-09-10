@@ -16,7 +16,7 @@ val exposed_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm") version "1.5.30"
 }
 
 group "net.littlelite.smarktor"
@@ -24,6 +24,16 @@ version "0.0.1"
 
 repositories {
     mavenCentral()
+}
+
+tasks.compileJava {
+    options.release.set(16)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
 }
 
 application {
